@@ -49,6 +49,17 @@ Atajos disponibles:
 - `s` → Search (Win+Space)
 - `p` → Screenshot (Win+Shift+3)
 
+### 5. **imouse_swipe.py** - Gestos y Swipes
+Realiza swipes y gestos táctiles fluidos.
+```bash
+python imouse_swipe.py
+```
+Gestos disponibles:
+- Swipe arriba/abajo (scroll)
+- Swipe izquierda/derecha (cambiar página)
+- Pull to refresh
+- Swipes súper rápidos
+
 ## 🔧 Scripts de Utilidad
 
 ### **generate_click_json.py**
@@ -100,6 +111,13 @@ python imouse_shortcuts.py
 ```bash
 python imouse_realtime.py
 # Presiona F9 para activar
+```
+
+### Hacer swipes y gestos:
+```bash
+python imouse_swipe.py
+# Elige opción 1 para swipe hacia abajo
+# Elige opción 5 para swipe súper rápido
 ```
 
 ## 📱 Resoluciones Soportadas
