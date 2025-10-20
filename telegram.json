@@ -1,0 +1,66 @@
+[
+  {
+    "timestamp": 0.0,
+    "direction": "out",
+    "description": "Reset mouse a (0,0)",
+    "bytes": [
+      0,
+      160,
+      0,
+      255,
+      255,
+      255,
+      255,
+      0,
+      0
+    ]
+  },
+  {
+    "timestamp": 0.05,
+    "direction": "out",
+    "description": "Mover a (322, 620)",
+    "bytes": [
+      0,
+      160,
+      0,
+      234,
+      112,
+      250,
+      118,
+      0,
+      0
+    ]
+  },
+  {
+    "timestamp": 0.15000000000000002,
+    "direction": "out",
+    "description": "Click izquierdo DOWN",
+    "bytes": [
+      0,
+      161,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "timestamp": 0.21500000000000002,
+    "direction": "out",
+    "description": "Click izquierdo UP",
+    "bytes": [
+      0,
+      161,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+]
