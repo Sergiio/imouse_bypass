@@ -171,7 +171,28 @@ def main():
 
     parser = argparse.ArgumentParser(
         description='Replay de capturas para dispositivo iMouse',
-        epilog='Ejemplo: python replay_imouse.py test_hola.json'
+        epilog='''
+EJEMPLOS DE USO:
+
+  Reproducir un archivo JSON:
+    python replay_imouse.py samples/click_300_300.json
+
+  Reproducir a velocidad lenta (50%):
+    python replay_imouse.py samples/correo.json -s 0.5
+
+  Reproducir a velocidad rápida (2x):
+    python replay_imouse.py samples/demo.json -s 2.0
+
+  Con dispositivo específico:
+    python replay_imouse.py samples/test.json -v 0x720a -p 0x3dab
+
+ARCHIVOS DE EJEMPLO DISPONIBLES:
+  samples/click_300_300.json  - Click en posición específica
+  samples/correo.json         - Escribir email
+  samples/telegram.json       - Abrir Telegram
+  samples/llamada.json        - Realizar llamada
+        ''',
+        formatter_class=argparse.RawDescriptionHelpFormatter
     )
 
     parser.add_argument('capture_file',
@@ -184,6 +205,17 @@ def main():
                         help='Product ID (default: 0x3dab)')
     parser.add_argument('-s', '--speed', type=float, default=1.0,
                         help='Velocidad de reproducción (default: 1.0)')
+
+    # Si no hay argumentos, mostrar ayuda
+    import sys
+    if len(sys.argv) == 1:
+        parser.print_help()
+        print("\n⚡ INICIO RÁPIDO:")
+        print("  python replay_imouse.py samples/click_300_300.json")
+        print("\nPara generar archivos JSON usa:")
+        print("  python imouse_complete_keymap.py \"texto\" -o samples/mi_texto.json")
+        print("  python generate_click_json.py -x 100 -y 200 -o samples/mi_click.json")
+        sys.exit(0)
 
     args = parser.parse_args()
 

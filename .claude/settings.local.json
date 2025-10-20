@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(dir /B)",
-      "Bash(git add -A)"
+      "Bash(git add -A)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nReorganización completa del proyecto y nuevas herramientas\n\n✨ Nuevos scripts interactivos:\n- imouse_typer.py: Escritor de texto en bucle continuo\n- imouse_realtime.py: Modo espejo en tiempo real (F9 para activar)\n- imouse_clicker.py: Envío interactivo de clicks sin archivos JSON\n- imouse_shortcuts.py: Atajos de teclado iOS (Home, Search, Screenshot)\n\n📁 Reorganización del directorio:\n- /samples: Todos los archivos JSON de ejemplo\n- /docs: Documentación técnica completa\n- /scripts: Scripts de análisis y utilidades\n- Raíz limpia con solo scripts principales\n\n🔧 Mejoras:\n- Envío directo sin archivos temporales\n- Feedback visual en todos los scripts\n- Comandos simplificados (h=Home, s=Search, p=Screenshot)\n- README actualizado con guía rápida\n\n🐛 Fixes:\n- Screenshot corregido a Win+Shift+3\n- Eliminados atajos que no funcionaban\n- Mejorado manejo de coordenadas\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push origin master)",
+      "Bash(python imouse_complete_keymap.py)",
+      "Bash(python imouse_complete_keymap.py -h)",
+      "Bash(python generate_click_json.py)"
     ],
     "deny": [],
     "ask": []

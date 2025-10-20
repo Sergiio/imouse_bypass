@@ -249,12 +249,39 @@ def main():
 
     parser = argparse.ArgumentParser(
         description='Generador de paquetes iMouse con mapeo COMPLETO',
-        epilog='Ejemplo: python imouse_complete_keymap.py "Hola Mundo!" -o output.json'
+        epilog='''
+EJEMPLOS DE USO:
+
+  Texto simple:
+    python imouse_complete_keymap.py "Hola Mundo" -o samples/hola.json
+
+  Email:
+    python imouse_complete_keymap.py "usuario@gmail.com" -o samples/email.json
+
+  Contraseña con símbolos:
+    python imouse_complete_keymap.py "P@ssw0rd123!" -o samples/password.json
+
+  URL completa:
+    python imouse_complete_keymap.py "https://www.google.com" -o samples/url.json
+
+  Ver mapa de caracteres soportados:
+    python imouse_complete_keymap.py --show-map "dummy" -o dummy.json
+        ''',
+        formatter_class=argparse.RawDescriptionHelpFormatter
     )
 
     parser.add_argument('text', help='Texto a convertir')
     parser.add_argument('-o', '--output', required=True, help='Archivo JSON de salida')
     parser.add_argument('--show-map', action='store_true', help='Mostrar mapa completo')
+
+    # Si no hay argumentos, mostrar ayuda
+    import sys
+    if len(sys.argv) == 1:
+        parser.print_help()
+        print("\n⚡ INICIO RÁPIDO:")
+        print('  python imouse_complete_keymap.py "Hola iPhone" -o samples/test.json')
+        print('  python replay_imouse.py samples/test.json')
+        sys.exit(0)
 
     args = parser.parse_args()
 

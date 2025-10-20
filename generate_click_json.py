@@ -218,13 +218,40 @@ def generate_drag_json(x1: int, y1: int, x2: int, y2: int, output_file: str,
 
 def main():
     import argparse
+    import sys
 
     parser = argparse.ArgumentParser(
-        description='Genera archivos JSON para replay_imouse.py',
-        epilog='Ejemplos:\n'
-               '  python generate_click_json.py -x 300 -y 300 -o click.json\n'
-               '  python generate_click_json.py -x 100 -y 200 --double -o dclick.json\n'
-               '  python generate_click_json.py -x1 100 -y1 100 -x2 500 -y2 500 --drag -o drag.json',
+        description='Genera archivos JSON para clicks y gestos en iPhone/iPad',
+        epilog='''
+EJEMPLOS DE USO:
+
+  Click simple en el centro de la pantalla:
+    python generate_click_json.py -x 182 -y 333 -o samples/center.json
+
+  Click en botón de llamada (esquina inferior):
+    python generate_click_json.py -x 300 -y 600 -o samples/call.json
+
+  Doble click para zoom:
+    python generate_click_json.py -x 182 -y 333 --double -o samples/zoom.json
+
+  Click derecho (mantener presionado):
+    python generate_click_json.py -x 100 -y 200 --button right -o samples/hold.json
+
+  Arrastrar (swipe) de arriba a abajo:
+    python generate_click_json.py -x1 182 -y1 100 -x2 182 -y2 500 --drag -o samples/swipe_down.json
+
+  Arrastrar horizontal (cambiar página):
+    python generate_click_json.py -x1 300 -y1 333 -x2 50 -y2 333 --drag -o samples/swipe_left.json
+
+  Para iPad (cambiar resolución):
+    python generate_click_json.py -x 400 -y 500 -w 768 --height 1024 -o samples/ipad_click.json
+
+RESOLUCIONES COMUNES:
+  iPhone Portrait:  365x667 (default)
+  iPhone Landscape: 667x365
+  iPad Portrait:    768x1024
+  iPad Landscape:   1024x768
+        ''',
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
 
@@ -242,6 +269,14 @@ def main():
     parser.add_argument('--drag', action='store_true', help='Generar drag & drop')
     parser.add_argument('--no-reset', action='store_true', help='No resetear posición antes de mover')
     parser.add_argument('--restart', action='store_true', help='Usar HT_Restart (0xa4) en lugar de reset normal')
+
+    # Si no hay argumentos, mostrar ayuda
+    if len(sys.argv) == 1:
+        parser.print_help()
+        print("\n⚡ INICIO RÁPIDO:")
+        print("  python generate_click_json.py -x 182 -y 333 -o samples/test_click.json")
+        print("  python replay_imouse.py samples/test_click.json")
+        sys.exit(0)
 
     args = parser.parse_args()
 
